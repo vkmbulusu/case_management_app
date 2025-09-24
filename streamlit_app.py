@@ -1,9 +1,13 @@
 import streamlit as st
 from pages.cases_list import show_cases_list
 from pages.case_detail import show_case_detail
+from db import create_db  # Add this import
 
 def main():
     st.set_page_config(page_title="Case Management App", layout="wide")
+    
+    # Create database tables if they don't exist (call once per app load)
+    create_db()
     
     # Sidebar for navigation
     st.sidebar.title("Navigation")
