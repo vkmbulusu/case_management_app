@@ -1,4 +1,5 @@
 import streamlit as st
+from pages.add_case import show_add_case
 from pages.cases_list import show_cases_list
 from pages.case_detail import show_case_detail
 from db import create_db  # Add this import
@@ -26,12 +27,14 @@ session.commit()
 session.close()
     # Sidebar for navigation
     st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", ["Cases List", "Case Detail"])
+    page = st.sidebar.radio("Go to", ["Cases List", "Case Detail","Add Case"])
     
     if page == "Cases List":
         show_cases_list()
     elif page == "Case Detail":
         show_case_detail()
+    elif page == "Add Case":
+        show_add_case()
 
 if __name__ == "__main__":
     main()
