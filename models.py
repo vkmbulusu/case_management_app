@@ -1,3 +1,4 @@
+from sqlalchemy import func
 from sqlalchemy import Column, Integer, String, Boolean, DECIMAL, TIMESTAMP, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Enum as SAEnum
@@ -34,5 +35,5 @@ class Update(Base):
     case_id = Column(Integer, ForeignKey("cases.case_id"), nullable=False)
     note = Column(String(1000), nullable=False)
     updated_by = Column(String(255), nullable=False)
-    timestamp = Column(TIMESTAMP, nullable=False, default=TIMESTAMP.now)
+    timestamp = Column(TIMESTAMP, nullable=False, default=func.now())
     sub_status = Column(SAEnum('INT_START', 'INT_WIP', 'ON_HOLD', 'PMA_DRAF', 'MAC', 'PAA_DRAF', 'AAC', 'PMA', 'PAA', 'ASSIGNED', 'KO_SENT', 'PMA_FUP_1', 'PMA_FUP_2', 'PMA_FUP_3', 'PAC', 'CANCELLED', 'Case_Created', 'PMCA', 'Note', 'PMA_FUP_4', 'SUPPORT', 'HANDOVER', name="sub_status_enum"), nullable=False)
