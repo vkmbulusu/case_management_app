@@ -185,7 +185,7 @@ def render_cases_tab():
     )
     if uploaded_file and importer_cols[1].button("Import", use_container_width=True):
         import_cases_from_excel(uploaded_file)
-        st.experimental_rerun()
+        st.rerun()
 
     st.markdown("#### Cases Table")
     if cases:
@@ -238,7 +238,7 @@ def render_option_manager():
                 if new_api.strip():
                     db.add_api_option(new_api.strip())
                     st.success(f"Added API option: {new_api.strip()}")
-                    st.experimental_rerun()
+                    st.rerun()
                 else:
                     st.warning("Provide a non-empty value.")
 
@@ -250,7 +250,7 @@ def render_option_manager():
                 if new_issue.strip():
                     db.add_issue_option(new_issue.strip())
                     st.success(f"Added issue type: {new_issue.strip()}")
-                    st.experimental_rerun()
+                    st.rerun()
                 else:
                     st.warning("Provide a non-empty value.")
 
@@ -322,7 +322,7 @@ def render_case_details(case: Dict):
         db.delete_case(case["case_id"])
         st.success(f"Deleted case {case['case_id']}")
         st.session_state.selected_case_id = None
-        st.experimental_rerun()
+        st.rerun()
 
 
 def render_case_form(case: Optional[Dict]):
@@ -487,7 +487,7 @@ def render_case_form(case: Optional[Dict]):
                 st.error(f"Unable to save case: {exc}")
             finally:
                 st.session_state.show_case_form = False
-                st.experimental_rerun()
+                st.rerun()
 
 
 def render_updates_tab():
@@ -565,7 +565,7 @@ def render_updates_tab():
                 ):
                     db.delete_update(selected_update_id)
                     st.success(f"Deleted update {selected_update_id}")
-                    st.experimental_rerun()
+                    st.rerun()
 
 
 def render_update_form(
@@ -638,7 +638,7 @@ def render_update_form(
             finally:
                 st.session_state.show_update_form = False
                 st.session_state.edit_update_id = None
-                st.experimental_rerun()
+                st.rerun()
 
 
 def import_cases_from_excel(file):
