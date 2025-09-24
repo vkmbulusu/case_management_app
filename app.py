@@ -6,7 +6,6 @@ from typing import Dict, List, Optional
 import db
 import excel_utils
 
-
 MARKETPLACES = ["EU5", "EU", "3PX", "MENA", "AU", "SG", "NA", "JP", "ZA"]
 CASE_SOURCES = ["ASTRO", "WINSTON"]
 CASE_STATUSES = [
