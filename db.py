@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 # SQLite database
-DATABASE_URL = "sqlite:///cases.db"
+DATABASE_URL = "sqlite:///:memory:"
 engine = create_engine(DATABASE_URL, echo=False)
 
 # Session factory

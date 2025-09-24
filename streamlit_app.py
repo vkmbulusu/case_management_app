@@ -8,7 +8,22 @@ def main():
     
     # Create database tables if they don't exist (call once per app load)
     create_db()
-    
+    from db import SessionLocal
+from models import Case, Update
+
+# Add sample data
+session = SessionLocal()
+sample_case = Case(
+    seller_id=12345, seller_name="Sample Seller", specialist_id=67890,
+    specialist_name="John Doe", marketplace="NA", case_source="ASTRO",
+    case_status="SUBMITTED", workstream="PAID", issue_type="Test Issue",
+    complexity="Medium", priority="High", api_supported=True,
+    integration_type="API v1", seller_type="NEW", feedback_received=False,
+    csat_score=4.5
+)
+session.add(sample_case)
+session.commit()
+session.close()
     # Sidebar for navigation
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Go to", ["Cases List", "Case Detail"])
